@@ -1,3 +1,18 @@
+--- create view
+
+create view dbo.analytics_main as 
+	
+select s.set_num, s.name as set_name, s.year, s.theme_id,  cast(s.num_parts as numeric) as num_parts, t.name as theme_name, t.parent_id, p.name as parent_theme_name
+from dbo.sets s
+left join dbo.themes t
+	on s.theme_id = t.id
+left join dbo.themes p
+	on p.id = t.parent_id
+
+
+
+
+
 ---1---
 ---What is the total number of parts per theme
 SELECT * FROM analytics_main
